@@ -4,7 +4,7 @@ import { db } from "./lib/db";
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.json());
 // CSRF Protection
 app.use((req, res, next) => {
   if (req.method === "GET") {
