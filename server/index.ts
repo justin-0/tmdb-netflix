@@ -1,5 +1,6 @@
 import express from "express";
 import { router as authRouter } from "./routes/auth-route";
+import { db } from "./lib/db";
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -23,4 +24,7 @@ app.use((req, res, next) => {
 
 app.use("/api/v1/auth", authRouter);
 
-app.listen(5000, () => console.log("Server running"));
+app.listen(5000, () => {
+  console.log("Server running on port 5000");
+  db;
+});
