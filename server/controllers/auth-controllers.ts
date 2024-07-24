@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { z } from "zod";
 import { User } from "../models/user-model";
+import { hashedPassword } from "../lib/passwordhash";
 
 const RegisterSchema = z.object({
   email: z
@@ -64,10 +65,12 @@ export async function register(req: Request, res: Response) {
         .json({ success: false, message: "Username is taken" });
     }
 
+    const hashed = await hashedPassword(password);
+
     const user = new User({
       email,
       username,
-      password,
+      password: hashed,
     });
 
     await user.save();
