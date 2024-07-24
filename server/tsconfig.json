@@ -5,5 +5,8 @@
     "moduleResolution": "NodeNext",
     "strict": true,
     "skipLibCheck": true
+    // "resolveJsonModule": true,
+    // "allowJs": true,
+    // "esModuleInterop": true
   }
 }

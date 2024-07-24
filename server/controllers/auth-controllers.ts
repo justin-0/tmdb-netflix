@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { z } from "zod";
 import { User } from "../models/user-model";
 import { hashedPassword } from "../lib/passwordhash";
+import { UserDocument } from "../lib/types";
 
 const RegisterSchema = z.object({
   email: z
@@ -67,15 +68,21 @@ export async function register(req: Request, res: Response) {
 
     const hashed = await hashedPassword(password);
 
-    const user = new User({
+    const newUser = new User({
       email,
       username,
       password: hashed,
     });
 
-    await user.save();
+    const user = (await newUser.save()) as UserDocument;
 
-    return res.status(201).json({ message: "success" });
+    return res.status(201).json({
+      message: "success",
+      user: {
+        ...user._doc,
+        password: "",
+      },
+    });
   } catch (err) {
     if (err instanceof Error) {
       console.log(err.message);
