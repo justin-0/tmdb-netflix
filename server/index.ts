@@ -1,10 +1,12 @@
 import express from "express";
 import { router as authRouter } from "./routes/auth-route";
+import cookieParser from "cookie-parser";
 import { db } from "./lib/db";
 
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 // CSRF Protection
 app.use((req, res, next) => {
   if (req.method === "GET") {
