@@ -3,6 +3,7 @@ import { z } from "zod";
 import { User } from "../models/user-model";
 import { hashedPassword } from "../lib/passwordhash";
 import { UserDocument } from "../lib/types";
+import { generateToken } from "../lib/generateToken";
 
 const RegisterSchema = z.object({
   email: z
@@ -73,9 +74,10 @@ export async function register(req: Request, res: Response) {
       username,
       password: hashed,
     });
-
+    const { token, cookieOptions } = generateToken(newUser._id);
     const user = (await newUser.save()) as UserDocument;
 
+    res.cookie("jwt", token, cookieOptions);
     return res.status(201).json({
       message: "success",
       user: {

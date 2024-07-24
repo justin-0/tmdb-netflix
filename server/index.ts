@@ -1,6 +1,7 @@
 import express from "express";
 import { router as authRouter } from "./routes/auth-route";
 import { db } from "./lib/db";
+
 const app = express();
 
 app.use(express.json());
