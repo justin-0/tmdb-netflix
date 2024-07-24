@@ -45,6 +45,34 @@ export async function register(req: Request, res: Response) {
     }
     // Data is correct and sanitised
     const { email, username, password } = parsedData.data;
+    const existingUser = await User.findOne({
+      email,
+    });
+    const existingUsername = await User.findOne({
+      username,
+    });
+
+    if (existingUser) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Email is already in use" });
+    }
+
+    if (existingUsername) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Username is taken" });
+    }
+
+    const user = new User({
+      email,
+      username,
+      password,
+    });
+
+    await user.save();
+
+    return res.status(201).json({ message: "success" });
   } catch (err) {
     if (err instanceof Error) {
       console.log(err.message);
