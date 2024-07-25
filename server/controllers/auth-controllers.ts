@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { z } from "zod";
 import { User } from "../models/user-model";
 import { hashedPassword } from "../lib/passwordhash";
-import { UserDocument } from "../lib/types";
+import { UserDocument } from "../types/mongodb/types";
 import { generateToken } from "../lib/generateToken";
 import bcryptjs from "bcryptjs";
 

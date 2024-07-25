@@ -6,6 +6,7 @@ import movieRouter from "./routes/movie-route";
 import { db } from "./lib/db";
 import { tvShowRouter } from "./routes/tv-show-route";
 import { isAuthorised } from "./middleware/is-authorised";
+import searchRouter from "./routes/search-route";
 
 const app = express();
 // Middleware
@@ -29,6 +30,7 @@ app.use((req, res, next) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/movie", isAuthorised, movieRouter);
 app.use("/api/v1/tv_shows", isAuthorised, tvShowRouter);
+app.use("/api/v1/search", isAuthorised, searchRouter);
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");

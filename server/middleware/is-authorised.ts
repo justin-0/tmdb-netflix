@@ -14,7 +14,7 @@ export async function isAuthorised(
 ) {
   const token = req.cookies.jwt;
   if (!token) {
-    return res.status(401).json({ message: "Unauthorised" }).redirect("/");
+    return res.status(401).json({ message: "Unauthorised" });
   }
 
   try {
@@ -26,9 +26,11 @@ export async function isAuthorised(
     const user = await User.findById(userId);
 
     if (!user) {
-      return res.status(401).json({ message: "User not found" }).redirect("/");
+      return res.status(401).json({ message: "User not found" });
     }
     req.user = user;
     next();
-  } catch (error) {}
+  } catch (error) {
+    console.log("Protected route, you are unauthorised to access");
+  }
 }
