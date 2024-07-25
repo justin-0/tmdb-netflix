@@ -28,7 +28,7 @@ export async function isAuthorised(
     if (!user) {
       return res.status(401).json({ message: "User not found" }).redirect("/");
     }
-
+    req.user = user;
     next();
   } catch (error) {}
 }
