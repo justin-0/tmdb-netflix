@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { consumeTMDB } from "../lib/tmdb-service";
+import { AxiosError } from "axios";
 
 export async function getTrendingMovie(req: Request, res: Response) {
   try {
@@ -10,8 +11,13 @@ export async function getTrendingMovie(req: Request, res: Response) {
       data.results[Math.floor(Math.random() * data.results?.length)];
 
     res.json({ success: true, content: randomMovie });
-  } catch (error) {
-    console.error("Error in getTrendingMovie:", error);
+  } catch (err) {
+    if (err instanceof AxiosError) {
+      if (err.status === 404) {
+        return res.status(404).send(null);
+      }
+    }
+    res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 }
 
@@ -24,22 +30,26 @@ export async function getMovieIdTrailers(req: Request, res: Response) {
 
     res.json({ success: true, content: data.results });
   } catch (err) {
-    if (err instanceof Error) {
-      console.log(err.message);
+    if (err instanceof AxiosError) {
+      if (err.status === 404) {
+        return res.status(404).send(null);
+      }
     }
+    res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 }
 
 export async function getMovieIdDetails(req: Request, res: Response) {
   const { id } = req.params;
-  console.log("id ", id);
   try {
     const data = await consumeTMDB(`https://api.themoviedb.org/3/movie/${id}`);
-    console.log("received data ", data);
     res.json({ success: true, content: data });
   } catch (err) {
-    if (err instanceof Error) {
-      console.log(err.message);
+    if (err instanceof AxiosError) {
+      if (err.status === 404) {
+        return res.status(404).send(null);
+      }
     }
+    res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 }
