@@ -95,3 +95,16 @@ export async function getUserHistory(req: Request, res: Response) {
     res.status(200).json({ content: user?.searchHistory });
   } catch (error) {}
 }
+export async function deleteUserHistoryItem(req: Request, res: Response) {
+  const id = parseInt(req.params.id);
+  console.log(id);
+  try {
+    await User.findOneAndUpdate(req.user._id, {
+      $pull: {
+        searchHistory: { id },
+      },
+    });
+
+    res.status(200).json({ success: true });
+  } catch (error) {}
+}

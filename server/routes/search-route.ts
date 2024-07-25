@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  deleteUserHistoryItem,
   getActorSearchResults,
   getMovieSearchResults,
   getTvSearchResults,
@@ -12,5 +13,6 @@ searchRouter.get("/person/:query", getActorSearchResults);
 searchRouter.get("/movie/:query", getMovieSearchResults);
 searchRouter.get("/tv/:query", getTvSearchResults);
 searchRouter.get("/history", getUserHistory);
+searchRouter.delete("/history/:id", deleteUserHistoryItem);
 
 export default searchRouter;
