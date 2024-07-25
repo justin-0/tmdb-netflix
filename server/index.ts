@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import { authRouter } from "./routes/auth-route";
 import movieRouter from "./routes/movie-route";
 import { db } from "./lib/db";
+import { tvShowRouter } from "./routes/tv-show-route";
 
 const app = express();
 // Middleware
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
 // Routes
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/movie", movieRouter);
+app.use("/api/v1/tv_shows", tvShowRouter);
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");
