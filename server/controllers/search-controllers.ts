@@ -96,8 +96,9 @@ export async function getUserHistory(req: Request, res: Response) {
   } catch (error) {}
 }
 export async function deleteUserHistoryItem(req: Request, res: Response) {
+  // Convert string to number otherwise will not delete
   const id = parseInt(req.params.id);
-  console.log(id);
+
   try {
     await User.findOneAndUpdate(req.user._id, {
       $pull: {
