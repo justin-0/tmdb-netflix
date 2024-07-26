@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 .hero-bg {
-  background-image: url("./public/hero.jpg"),
-    linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./public/hero.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
