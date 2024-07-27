@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import RegisterForm from "../components/forms/register-form";
 
 function Register() {
   return (
@@ -15,11 +16,12 @@ function Register() {
         </nav>
       </header>
       {/* TODO: DIV WITH TITLE TO REIGSTER AND FORM */}
-      <div className="mt-32 flex flex-col items-center justify-center space-x-8 outline outline-white">
-        <h1 className="text-2xl text-white">Register your account</h1>
-        <div>
-          {/* FORM HERE */}
-          form
+      <div className="mt-24 flex flex-col items-center justify-center">
+        <h1 className="text-2xl text-white md:text-3xl lg:text-4xl">
+          Register your account
+        </h1>
+        <div className="mt-8 rounded-md bg-black/60 px-5 py-5 lg:w-[500px]">
+          <RegisterForm />
         </div>
       </div>
     </div>
