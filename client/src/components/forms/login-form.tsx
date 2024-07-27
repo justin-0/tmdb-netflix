@@ -14,13 +14,6 @@ import {
 import { Input } from "../ui/input";
 
 const formSchema = z.object({
-  email: z
-    .string({
-      required_error: "Email is required",
-    })
-    .email({
-      message: "Email is not valid",
-    }),
   username: z
     .string({
       required_error: "Username is required",
@@ -40,11 +33,10 @@ const formSchema = z.object({
     }),
 });
 
-function RegisterForm() {
+function LoginForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
       username: "",
       password: "",
     },
@@ -59,19 +51,6 @@ function RegisterForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-white">Email</FormLabel>
-              <FormControl>
-                <Input placeholder="" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <FormField
           control={form.control}
           name="username"
@@ -103,11 +82,11 @@ function RegisterForm() {
           variant="outline"
           className="bg-netflix text-white hover:bg-netflix/80 hover:text-white/80"
         >
-          Submit
+          Login
         </Button>
       </form>
     </Form>
   );
 }
 
-export default RegisterForm;
+export default LoginForm;
