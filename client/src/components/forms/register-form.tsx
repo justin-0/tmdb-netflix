@@ -58,7 +58,7 @@ function RegisterForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
           name="email"
@@ -98,7 +98,11 @@ function RegisterForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" variant="outline">
+        <Button
+          type="submit"
+          variant="outline"
+          className="bg-netflix hover:bg-netflix/80 text-white hover:text-white/80"
+        >
           Submit
         </Button>
       </form>

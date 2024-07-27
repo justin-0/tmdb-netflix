@@ -22,6 +22,7 @@ module.exports = {
           "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/hero.jpg)",
       },
       colors: {
+        netflix: "#E50914",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
