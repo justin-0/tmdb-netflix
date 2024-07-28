@@ -79,7 +79,6 @@ function LoginForm() {
         />
         <Button
           type="submit"
-          variant="outline"
           className="bg-netflix text-white hover:bg-netflix/80 hover:text-white/80"
         >
           Login
