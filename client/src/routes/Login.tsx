@@ -25,9 +25,10 @@ function Login() {
             <LoginForm />
           </div>
           <div>
-            <Link to="/login">
+            <Link to="/register">
               <p className="mt-4 text-left text-white/80">
-                Already a member? <span className="text-netflix">Login</span>
+                Don't have an account?{" "}
+                <span className="text-netflix">Register</span>
               </p>
             </Link>
           </div>
