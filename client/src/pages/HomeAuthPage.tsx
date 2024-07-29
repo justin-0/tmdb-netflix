@@ -142,8 +142,32 @@ function HomeAuthPage() {
         {/* Parent */}
         <div className="mx-auto flex w-4/5 flex-col items-center justify-center gap-y-6 md:w-3/4 md:flex-row md:gap-x-4 md:gap-y-0">
           {/* Content */}
-          <div className="flex-1">
-            <img src="/stranger-things-lg.jpg" />
+          <div className="relative flex-1 outline outline-fuchsia-400">
+            <img
+              src="/stranger-things-lg.jpg"
+              alt="stranger things cover"
+              className="mt-4"
+            />
+            <div className="absolute bottom-5 left-1/2 flex h-20 w-3/4 -translate-x-1/2 items-center gap-2 rounded-md border border-slate-500 bg-black px-2 lg:left-36 lg:w-1/2 lg:-translate-x-0">
+              <img
+                src="/stranger-things-sm.png"
+                alt="image"
+                className="h-full"
+              />
+              <div className="flex w-full items-center justify-between">
+                <div className="flex flex-col gap-0">
+                  <span className="text-md font-bold lg:text-lg">
+                    Stranger Things
+                  </span>
+                  <span className="text-sm text-blue-500">Downloading...</span>
+                </div>
+                <img
+                  src="/download-icon.gif"
+                  alt="downloading progress gif icon"
+                  className="h-12"
+                />
+              </div>
+            </div>
           </div>
           <div className="flex-1 text-white">
             <h2 className="text-center text-2xl font-bold md:text-left md:text-5xl">
