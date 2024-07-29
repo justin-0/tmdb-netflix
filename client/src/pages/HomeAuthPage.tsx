@@ -68,9 +68,9 @@ function HomeAuthPage() {
       </div>
       <div className="flex h-[600px] flex-col items-center justify-center bg-black md:h-[750px]">
         {/* Parent */}
-        <div className="mx-auto flex w-4/5 flex-col items-center justify-center gap-y-6 outline outline-red-600 md:w-3/4 md:flex-row md:gap-x-4 md:gap-y-0">
+        <div className="mx-auto flex w-4/5 flex-col items-center justify-center gap-y-6 md:w-3/4 md:flex-row md:gap-x-4 md:gap-y-0">
           {/* Content */}
-          <div className="text-white outline outline-blue-600">
+          <div className="flex-1 text-white">
             <h2 className="text-center text-2xl font-bold md:text-left md:text-5xl">
               Enjoy on your TV
             </h2>
@@ -80,20 +80,32 @@ function HomeAuthPage() {
             </p>
           </div>
           {/* Image */}
-          <div>
-            <img src="/tv.png" />
+          <div className="relative flex-1">
+            <img src="/tv.png" className="relative z-20" />
+            <video
+              className="absolute left-1/2 top-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2"
+              autoPlay
+            >
+              <source src="/hero-vid.mp4" />
+            </video>
           </div>
         </div>
       </div>
       <Separator className="h-3 bg-zinc-800" />
-      <div className="flex h-[400px] flex-col items-center justify-center bg-black md:h-[550px]">
+      <div className="flex h-[600px] flex-col items-center justify-center bg-black md:h-[750px]">
         {/* Parent */}
-        <div className="mx-auto flex w-4/5 flex-col items-center justify-center gap-y-6 outline outline-red-600 md:w-3/4 md:flex-row md:gap-x-4 md:gap-y-0">
+        <div className="mx-auto flex w-4/5 flex-col items-center justify-center gap-y-6 md:w-3/4 md:flex-row md:gap-x-4 md:gap-y-0">
           {/* Content */}
-          <div>
-            <img src="/device-pile.png" />
+          <div className="relative flex-1">
+            <img src="/device-pile.png" className="relative z-20 mt-4" />
+            <video
+              className="absolute left-1/2 top-2 z-10 h-4/6 max-w-[63%] -translate-x-1/2"
+              autoPlay
+            >
+              <source src="/video-devices.mp4" />
+            </video>
           </div>
-          <div className="text-white outline outline-blue-600">
+          <div className="flex-1 text-white">
             <h2 className="text-center text-2xl font-bold md:text-left md:text-5xl">
               Watch everywhere
             </h2>
@@ -106,11 +118,11 @@ function HomeAuthPage() {
         </div>
       </div>
       <Separator className="h-3 bg-zinc-800" />
-      <div className="flex h-[400px] flex-col items-center justify-center bg-black md:h-[550px]">
+      <div className="flex h-[600px] flex-col items-center justify-center bg-black md:h-[750px]">
         {/* Parent */}
-        <div className="mx-auto flex w-4/5 flex-col items-center justify-center gap-y-6 outline outline-red-600 md:w-3/4 md:flex-row md:gap-x-4 md:gap-y-0">
+        <div className="mx-auto flex w-4/5 flex-col items-center justify-center gap-y-6 md:w-3/4 md:flex-row md:gap-x-4 md:gap-y-0">
           {/* Content */}
-          <div className="text-white outline outline-blue-600">
+          <div className="flex-1 text-white">
             <h2 className="text-center text-2xl font-bold md:text-left md:text-5xl">
               Create profiles for children
             </h2>
@@ -120,20 +132,20 @@ function HomeAuthPage() {
             </p>
           </div>
           {/* Image */}
-          <div>
+          <div className="flex-1">
             <img src="/kids.png" />
           </div>
         </div>
       </div>
       <Separator className="h-3 bg-zinc-800" />
-      <div className="flex h-[400px] flex-col items-center justify-center bg-black md:h-[550px]">
+      <div className="flex h-[600px] flex-col items-center justify-center bg-black md:h-[750px]">
         {/* Parent */}
-        <div className="mx-auto flex w-4/5 flex-col items-center justify-center gap-y-6 outline outline-red-600 md:w-3/4 md:flex-row md:gap-x-4 md:gap-y-0">
+        <div className="mx-auto flex w-4/5 flex-col items-center justify-center gap-y-6 md:w-3/4 md:flex-row md:gap-x-4 md:gap-y-0">
           {/* Content */}
-          <div className="">
+          <div className="flex-1">
             <img src="/stranger-things-lg.jpg" />
           </div>
-          <div className="text-white outline outline-blue-600">
+          <div className="flex-1 text-white">
             <h2 className="text-center text-2xl font-bold md:text-left md:text-5xl">
               Download your programmes to watch offline
             </h2>
