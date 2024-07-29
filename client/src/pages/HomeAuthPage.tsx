@@ -3,8 +3,15 @@ import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { ChevronRight } from "lucide-react";
 import { Separator } from "../components/ui/separator";
+import { useState } from "react";
 
 function HomeAuthPage() {
+  const [email, setEmail] = useState("");
+
+  const handleEmailValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
   return (
     <div>
       <div className="min-h-[30rem] w-full bg-hero-img md:min-h-[40rem]">
@@ -50,17 +57,20 @@ function HomeAuthPage() {
             </p>
             <div className="flex w-3/4 flex-col items-center justify-center gap-y-4 md:flex-row md:gap-x-2">
               <Input
-                className="w-full md:w-[400px]"
+                className="w-full text-black md:w-[400px]"
+                onChange={handleEmailValue}
                 placeholder="Email address"
               />
               <div className="flex items-center justify-center">
-                <Button
-                  className="bg-netflix font-bold text-white hover:bg-netflix/80 hover:text-white/80 md:text-xl"
-                  size="lg"
-                >
-                  Get Started
-                  <ChevronRight className="ml-2 h-6 w-6" />
-                </Button>
+                <Link to={`/register?email=${email}`}>
+                  <Button
+                    className="bg-netflix font-bold text-white hover:bg-netflix/80 hover:text-white/80 md:text-xl"
+                    size="lg"
+                  >
+                    Get Started
+                    <ChevronRight className="ml-2 h-6 w-6" />
+                  </Button>
+                </Link>
               </div>
             </div>
           </section>
@@ -142,7 +152,7 @@ function HomeAuthPage() {
         {/* Parent */}
         <div className="mx-auto flex w-4/5 flex-col items-center justify-center gap-y-6 md:w-3/4 md:flex-row md:gap-x-4 md:gap-y-0">
           {/* Content */}
-          <div className="relative flex-1 outline outline-fuchsia-400">
+          <div className="relative flex-1">
             <img
               src="/stranger-things-lg.jpg"
               alt="stranger things cover"
@@ -169,7 +179,7 @@ function HomeAuthPage() {
               </div>
             </div>
           </div>
-          <div className="flex-1 text-white">
+          <div className="order-first flex-1 text-white md:order-none">
             <h2 className="text-center text-2xl font-bold md:text-left md:text-5xl">
               Download your programmes to watch offline
             </h2>

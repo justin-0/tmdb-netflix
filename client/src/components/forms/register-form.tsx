@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useSearchParams } from "react-router-dom";
 
 import { Button } from "../ui/button";
 import {
@@ -41,10 +42,13 @@ const formSchema = z.object({
 });
 
 function RegisterForm() {
+  const [searchParams] = useSearchParams();
+  const emailFromParams = searchParams.get("email");
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
+      email: emailFromParams ?? "",
       username: "",
       password: "",
     },
