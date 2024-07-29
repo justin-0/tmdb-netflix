@@ -65,18 +65,23 @@ function HomeAuthPage() {
           </section>
         </div>
       </div>
-      <div className="flex min-h-[500px] flex-col items-center justify-center bg-black">
-        <div className="mx-auto flex flex-col items-center justify-center outline outline-red-500 md:w-2/4 md:flex-row">
-          <div className="flex flex-col justify-center md:w-2/4 md:items-start">
-            <h2 className="text-center text-3xl font-bold text-white md:text-left md:text-5xl">
+      <div className="flex h-[600px] flex-col items-center justify-center bg-black md:h-[750px]">
+        {/* Parent */}
+        <div className="mx-auto flex w-4/5 flex-col items-center justify-center gap-y-6 outline outline-red-600 md:w-3/4 md:flex-row md:gap-x-4 md:gap-y-0">
+          {/* Content */}
+          <div className="text-white outline outline-blue-600">
+            <h2 className="text-center text-2xl font-bold md:text-left md:text-5xl">
               Enjoy on your TV
             </h2>
-            <p className="mt-4 text-balance text-center text-lg text-white md:text-left lg:text-2xl">
+            <p className="mt-4 text-center text-lg md:text-left md:text-xl md:font-medium">
               Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV,
               Blu-ray players and more.
             </p>
           </div>
-          <div className="w-2/4 text-white">photo frame</div>
+          {/* Image */}
+          <div>
+            <img src="/tv.png" />
+          </div>
         </div>
       </div>
     </div>
