@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { ChevronRight } from "lucide-react";
+import { Separator } from "../components/ui/separator";
 
 function HomeAuthPage() {
   return (
@@ -82,6 +83,65 @@ function HomeAuthPage() {
           <div>
             <img src="/tv.png" />
           </div>
+        </div>
+      </div>
+      <Separator className="h-3 bg-zinc-800" />
+      <div className="flex h-[400px] flex-col items-center justify-center bg-black md:h-[550px]">
+        {/* Parent */}
+        <div className="mx-auto flex w-4/5 flex-col items-center justify-center gap-y-6 outline outline-red-600 md:w-3/4 md:flex-row md:gap-x-4 md:gap-y-0">
+          {/* Content */}
+          <div>
+            <img src="/device-pile.png" />
+          </div>
+          <div className="text-white outline outline-blue-600">
+            <h2 className="text-center text-2xl font-bold md:text-left md:text-5xl">
+              Watch everywhere
+            </h2>
+            <p className="mt-4 text-center text-lg md:text-left md:text-xl md:font-medium">
+              Stream unlimited films and TV programmes on your phone, tablet,
+              laptop and TV.
+            </p>
+          </div>
+          {/* Image */}
+        </div>
+      </div>
+      <Separator className="h-3 bg-zinc-800" />
+      <div className="flex h-[400px] flex-col items-center justify-center bg-black md:h-[550px]">
+        {/* Parent */}
+        <div className="mx-auto flex w-4/5 flex-col items-center justify-center gap-y-6 outline outline-red-600 md:w-3/4 md:flex-row md:gap-x-4 md:gap-y-0">
+          {/* Content */}
+          <div className="text-white outline outline-blue-600">
+            <h2 className="text-center text-2xl font-bold md:text-left md:text-5xl">
+              Create profiles for children
+            </h2>
+            <p className="mt-4 text-center text-lg md:text-left md:text-xl md:font-medium">
+              Send children on adventures with their favourite characters in a
+              space made just for them – free with your membership.
+            </p>
+          </div>
+          {/* Image */}
+          <div>
+            <img src="/kids.png" />
+          </div>
+        </div>
+      </div>
+      <Separator className="h-3 bg-zinc-800" />
+      <div className="flex h-[400px] flex-col items-center justify-center bg-black md:h-[550px]">
+        {/* Parent */}
+        <div className="mx-auto flex w-4/5 flex-col items-center justify-center gap-y-6 outline outline-red-600 md:w-3/4 md:flex-row md:gap-x-4 md:gap-y-0">
+          {/* Content */}
+          <div className="">
+            <img src="/stranger-things-lg.jpg" />
+          </div>
+          <div className="text-white outline outline-blue-600">
+            <h2 className="text-center text-2xl font-bold md:text-left md:text-5xl">
+              Download your programmes to watch offline
+            </h2>
+            <p className="mt-4 text-center text-lg md:text-left md:text-xl md:font-medium">
+              Watch on a plane, train or submarine...
+            </p>
+          </div>
+          {/* Image */}
         </div>
       </div>
     </div>
