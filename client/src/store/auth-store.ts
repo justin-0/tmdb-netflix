@@ -16,7 +16,7 @@ interface RegisterReponse {
 
 interface AuthState {
   user: null | UserDocument;
-  signup: (data: RegisterData) => Promise<RegisterReponse | undefined>;
+  register: (data: RegisterData) => Promise<RegisterReponse | undefined>;
   login: () => void;
   logout: () => void;
   isAuth: () => void;
@@ -24,7 +24,7 @@ interface AuthState {
 
 const useAuthStore = create<AuthState>()((set) => ({
   user: null,
-  signup: async (data: RegisterData) => {
+  register: async (data: RegisterData) => {
     try {
       const response: AxiosResponse<RegisterReponse> = await axios.post(
         "/api/v1/auth/register",

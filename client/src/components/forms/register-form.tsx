@@ -47,6 +47,7 @@ function RegisterForm() {
   const [searchParams] = useSearchParams();
   const emailFromParams = searchParams.get("email");
   const { register } = useAuthStore();
+  const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -60,9 +61,10 @@ function RegisterForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    try {
-      await register(values);
-    } catch (error) {}
+    const resp = await register(values);
+    if (resp?.success) {
+      navigate("/");
+    }
   }
 
   return (
