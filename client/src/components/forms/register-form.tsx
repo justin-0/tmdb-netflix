@@ -2,6 +2,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Button } from "../ui/button";
 import {
@@ -45,7 +46,7 @@ const formSchema = z.object({
 function RegisterForm() {
   const [searchParams] = useSearchParams();
   const emailFromParams = searchParams.get("email");
-  const { signup } = useAuthStore();
+  const { register } = useAuthStore();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -59,8 +60,9 @@ function RegisterForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    const resp = await signup(values);
-    return resp;
+    try {
+      await register(values);
+    } catch (error) {}
   }
 
   return (
