@@ -3,7 +3,7 @@ import "dotenv/config";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user-model";
 
-type DecodedToken = {
+export type DecodedToken = {
   userId: string;
 };
 
@@ -23,7 +23,7 @@ export async function isAuthorised(
       process.env.JWT_SECRET!
     ) as DecodedToken;
 
-    const user = await User.findById(userId);
+    const user = await User.findById(userId).select("-password");
 
     if (!user) {
       return res.status(401).json({ message: "User not found" });

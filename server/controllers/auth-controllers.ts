@@ -5,6 +5,9 @@ import { hashedPassword } from "../lib/passwordhash";
 import { UserDocument } from "../types/mongodb/types";
 import { generateToken } from "../lib/generateToken";
 import bcryptjs from "bcryptjs";
+import "dotenv/config";
+import { DecodedToken } from "../middleware/is-authorised";
+import jwt from "jsonwebtoken";
 
 const RegisterSchema = z.object({
   email: z
@@ -156,6 +159,16 @@ export async function logout(req: Request, res: Response) {
       });
     }
     res.status(200).json({ message: "logout successful" });
+  } catch (err) {
+    if (err instanceof Error) {
+      console.log(err.message);
+    }
+  }
+}
+
+export async function authCheck(req: Request, res: Response) {
+  try {
+    res.status(200).json({ success: true, user: req.user });
   } catch (err) {
     if (err instanceof Error) {
       console.log(err.message);
