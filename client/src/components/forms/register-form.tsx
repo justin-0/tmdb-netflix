@@ -13,6 +13,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
+import useAuthStore from "../../store/auth-store";
 
 const formSchema = z.object({
   email: z
@@ -44,6 +45,7 @@ const formSchema = z.object({
 function RegisterForm() {
   const [searchParams] = useSearchParams();
   const emailFromParams = searchParams.get("email");
+  const { signup } = useAuthStore();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -54,10 +56,10 @@ function RegisterForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    const resp = await signup(values);
   }
 
   return (
