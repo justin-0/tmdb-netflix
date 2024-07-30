@@ -1,18 +1,10 @@
-import { Button } from "../components/ui/button";
-import useAuthStore from "../store/auth-store";
+import Navbar from "../components/navbars/auth-nav";
 
 function HomePage() {
-  const { logout } = useAuthStore();
   return (
-    <>
-      <h1>Auth Page</h1>
-      <Button
-        onClick={logout}
-        className="bg-netflix text-white hover:bg-netflix/80 hover:text-white/80"
-      >
-        Logout
-      </Button>
-    </>
+    <div>
+      <Navbar />
+    </div>
   );
 }
 
