@@ -71,17 +71,30 @@ const useAuthStore = create<AuthState>()((set) => ({
       }
     }
   },
-  logout: async () => {},
+  logout: async () => {
+    try {
+      await axios.post("/api/v1/auth/logout");
+      set({ user: null });
+    } catch (err) {}
+  },
   isAuth: async () => {
     try {
       const resp: AxiosResponse<RegisterReponse> = await axios.get(
         "/api/v1/auth/authCheck",
       );
-      console.log("Are they auth? ", resp);
+
       if (resp.data.success) {
         set({ user: resp.data.user });
       }
-    } catch (error) {}
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        const error = err as AxiosError<{ success: boolean; message: string }>;
+        if (!error.response?.data.success) {
+          // toast.error(error.response?.data?.message || "An error occurred");
+          set({ user: null });
+        }
+      }
+    }
   },
 }));
 

@@ -1,7 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoginForm from "../components/forms/login-form";
+import useAuthStore from "../store/auth-store";
 
 function Login() {
+  const navigate = useNavigate();
+  const { user } = useAuthStore();
+
+  if (user) {
+    navigate("/");
+  }
   return (
     <div className="h-screen w-full bg-hero-img">
       <header className="px-6 py-3 md:px-24">

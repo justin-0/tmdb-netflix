@@ -1,7 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RegisterForm from "../components/forms/register-form";
+import useAuthStore from "../store/auth-store";
 
 function Register() {
+  const navigate = useNavigate();
+  const { user } = useAuthStore();
+
+  if (user) {
+    navigate("/");
+  }
+
   return (
     <div className="h-screen w-full bg-hero-img">
       <header className="px-6 py-3 md:px-24">
