@@ -12,6 +12,8 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
+import useAuthStore from "../../store/auth-store";
+import { useNavigate } from "react-router-dom";
 
 const formSchema = z.object({
   username: z
@@ -34,6 +36,9 @@ const formSchema = z.object({
 });
 
 function LoginForm() {
+  const { login } = useAuthStore();
+  const navigate = useNavigate();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,10 +47,13 @@ function LoginForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    const resp = await login(values);
+    if (resp?.success) {
+      navigate("/");
+    }
   }
 
   return (
