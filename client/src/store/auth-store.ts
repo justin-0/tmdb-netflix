@@ -72,7 +72,17 @@ const useAuthStore = create<AuthState>()((set) => ({
     }
   },
   logout: async () => {},
-  isAuth: async () => {},
+  isAuth: async () => {
+    try {
+      const resp: AxiosResponse<RegisterReponse> = await axios.get(
+        "/api/v1/auth/authCheck",
+      );
+      console.log("Are they auth? ", resp);
+      if (resp.data.success) {
+        set({ user: resp.data.user });
+      }
+    } catch (error) {}
+  },
 }));
 
 export default useAuthStore;
