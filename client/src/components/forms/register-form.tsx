@@ -60,6 +60,7 @@ function RegisterForm() {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     const resp = await signup(values);
+    return resp;
   }
 
   return (
@@ -106,9 +107,10 @@ function RegisterForm() {
         />
         <Button
           type="submit"
+          disabled={form.formState.isSubmitting}
           className="bg-netflix text-white hover:bg-netflix/80 hover:text-white/80"
         >
-          Submit
+          {form.formState.isSubmitting ? "Submitting" : "Submit"}
         </Button>
       </form>
     </Form>

@@ -2,7 +2,6 @@ import { create } from "zustand";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { UserDocument } from "../lib/types/user";
 import { toast } from "sonner";
-import { response } from "express";
 
 interface RegisterData {
   email: string;
@@ -33,7 +32,7 @@ const useAuthStore = create<AuthState>()((set) => ({
       );
       if (response.data.success) {
         set({ user: response.data.user });
-        toast("Account created.");
+        toast.success("Account created.");
       }
 
       return response.data;
