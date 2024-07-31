@@ -143,7 +143,7 @@ function HomeAuthPage() {
           </div>
           {/* Image */}
           <div className="flex-1">
-            <img src="/kids.png" />
+            <img src="/kids.png" loading="lazy" />
           </div>
         </div>
       </div>
@@ -156,12 +156,14 @@ function HomeAuthPage() {
             <img
               src="/stranger-things-lg.jpg"
               alt="stranger things cover"
+              loading="lazy"
               className="mt-4"
             />
             <div className="absolute bottom-5 left-1/2 flex h-20 w-3/4 -translate-x-1/2 items-center gap-2 rounded-md border border-slate-500 bg-black px-2 lg:left-36 lg:w-1/2 lg:-translate-x-0">
               <img
                 src="/stranger-things-sm.png"
                 alt="image"
+                loading="lazy"
                 className="h-full"
               />
               <div className="flex w-full items-center justify-between">
@@ -174,6 +176,7 @@ function HomeAuthPage() {
                 <img
                   src="/download-icon.gif"
                   alt="downloading progress gif icon"
+                  loading="lazy"
                   className="h-12"
                 />
               </div>

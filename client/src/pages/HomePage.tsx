@@ -21,11 +21,14 @@ function HomePage() {
 
   const data = useLoaderData() as ContentData;
   const navigate = useNavigate();
-  console.log(data);
 
   useEffect(() => {
     navigate("/");
   }, [content]);
+
+  if (!data) {
+    return null;
+  }
 
   return (
     <div className="relative h-full w-full">

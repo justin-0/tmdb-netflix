@@ -9,8 +9,6 @@ type ContentDisplayProps = {
 };
 
 function ContentDisplay({ data, content }: ContentDisplayProps) {
-  console.log(data.first_air_date);
-
   return (
     <div className="mt-52 max-w-4xl px-6 text-white md:pl-24 lg:pl-60">
       <div className="md:w-2/3 lg:w-3/4">

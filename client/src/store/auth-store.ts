@@ -91,6 +91,7 @@ const useAuthStore = create<AuthState>()((set) => ({
         const error = err as AxiosError<{ success: boolean; message: string }>;
         if (!error.response?.data.success) {
           // toast.error(error.response?.data?.message || "An error occurred");
+
           set({ user: null });
         }
       }
