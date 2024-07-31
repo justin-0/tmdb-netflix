@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import ContentDisplay from "../components/content";
 
 export interface ContentData {
+  id: number;
   backdrop_path: string;
   title: string;
   overview: string;
