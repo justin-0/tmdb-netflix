@@ -1,12 +1,12 @@
 import { create } from "zustand";
 
 interface MediaState {
-  content: "movies" | "tv";
-  setContent: (media: "movies" | "tv") => void;
+  content: "movie" | "tv_shows";
+  setContent: (media: "movie" | "tv_shows") => void;
 }
 
 const useMediaStore = create<MediaState>()((set) => ({
-  content: "movies",
+  content: "movie",
   setContent: (content) => set({ content }),
 }));
 

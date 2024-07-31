@@ -7,17 +7,17 @@ interface NavButtonsProps {
 }
 
 function NavButtons({ role }: NavButtonsProps) {
-  const { setContent, content } = useMediaStore();
-  console.log("Current content value: ", content);
+  const { setContent } = useMediaStore();
+
   if (role === "movies") {
     return (
-      <Button variant="ghost" onClick={() => setContent("movies")}>
+      <Button variant="ghost" onClick={() => setContent("movie")}>
         <span>Movies</span>
       </Button>
     );
   } else if (role === "tv shows") {
     return (
-      <Button variant="ghost" onClick={() => setContent("tv")}>
+      <Button variant="ghost" onClick={() => setContent("tv_shows")}>
         <span>TV Shows</span>
       </Button>
     );

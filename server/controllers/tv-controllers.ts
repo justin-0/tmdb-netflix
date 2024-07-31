@@ -5,12 +5,12 @@ import { consumeTMDB } from "../lib/tmdb-service";
 export async function getTrendingShows(req: Request, res: Response) {
   try {
     const data = await consumeTMDB(
-      "https://api.themoviedb.org/3/trending/movie/day"
+      "https://api.themoviedb.org/3/trending/tv/day"
     );
-    const randomMovie =
+    const randomShow =
       data.results[Math.floor(Math.random() * data.results?.length)];
 
-    res.json({ success: true, content: randomMovie });
+    res.json({ success: true, content: randomShow });
   } catch (err) {
     if (err instanceof AxiosError) {
       if (err.message.includes("404")) {

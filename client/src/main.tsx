@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "./layout/MainLayout.tsx";
 import Register from "./routes/Register.tsx";
 import Login from "./routes/Login.tsx";
+import contentLoader from "./lib/loaders/content-loader.ts";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <App />,
+        loader: contentLoader,
       },
       {
         path: "/register",
