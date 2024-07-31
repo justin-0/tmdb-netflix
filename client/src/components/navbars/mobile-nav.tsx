@@ -8,12 +8,12 @@ function MobileNav() {
     <div>
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline">
+          <Button>
             <Menu />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="mr-8 w-56">
-          <div className="flex flex-col items-center justify-center gap-3">
+        <PopoverContent className="mr-8 mt-5 w-56 bg-black/80">
+          <div className="flex flex-col items-center justify-center gap-3 text-white">
             <NavButtons role="movies" />
             <NavButtons role="tv shows" />
             <NavButtons role="history" />

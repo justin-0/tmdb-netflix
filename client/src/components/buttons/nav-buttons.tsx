@@ -8,19 +8,19 @@ interface NavButtonsProps {
 function NavButtons({ role }: NavButtonsProps) {
   if (role === "movies") {
     return (
-      <Button>
+      <Button variant="ghost">
         <span>Movies</span>
       </Button>
     );
   } else if (role === "tv shows") {
     return (
-      <Button>
+      <Button variant="ghost">
         <span>TV Shows</span>
       </Button>
     );
   } else {
     return (
-      <Button>
+      <Button variant="ghost">
         <Link to="/history">
           <span>History</span>
         </Link>
