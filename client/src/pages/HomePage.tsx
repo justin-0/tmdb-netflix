@@ -11,7 +11,7 @@ export interface ContentData {
   overview: string;
   vote_average: number;
   release_date: string;
-  first_air_data: string;
+  first_air_date: string;
   name: string;
 }
 
