@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ContentData } from "../pages/HomePage";
 
 type SliderProps = {
@@ -8,13 +9,25 @@ type SliderProps = {
 function Slider({ data, title }: SliderProps) {
   return (
     <div className="relative bg-black px-5 text-white md:px-20">
-      <h1>{title}</h1>
-      {data.map((d) => (
-        <>
-          {/* <h1>{title}</h1> */}
-          <h2 className="text-white">{d.title || d.name}</h2>
-        </>
-      ))}
+      <h2 className="mb-4 text-xl font-bold md:text-2xl">{title}</h2>
+      <div className="scrollbar-hide flex space-x-4 overflow-x-scroll">
+        {data.map((d) => (
+          <Link
+            to={`/watch/${d.id}`}
+            className="group relative min-w-[250px]"
+            key={d.id}
+          >
+            <div className="overflow-hidden rounded-lg">
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${d.backdrop_path}`}
+                alt="Movie image"
+                className="transition-transform duration-300 ease-in-out group-hover:scale-125"
+              />
+            </div>
+            <p className="mt-2 text-center">{d.title || d.name}</p>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
