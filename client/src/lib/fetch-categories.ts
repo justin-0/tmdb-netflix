@@ -34,10 +34,13 @@ export async function fetchCategories() {
 
     const results = await Promise.all(promises);
 
-    const categoryData = categories.map((category, index) => ({
-      [category]: results[index].data.content,
-    }));
-    console.log("Category Data Array: ", categoryData);
+    // const categoryData = categories.map((category, index) => ({
+    //   [category]: results[index].data.content,
+    // }));
+
+    const categoryData = results.map((category) => category.data.content);
+    console.log("CATEGORY DATA ", categoryData)
+
     return categoryData;
   } catch (error) {}
 }

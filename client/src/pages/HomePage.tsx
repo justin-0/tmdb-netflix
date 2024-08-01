@@ -2,9 +2,10 @@ import Navbar from "../components/navbars/auth-nav";
 
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useMediaStore from "../store/media-store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ContentDisplay from "../components/content";
 import { fetchCategories } from "../lib/fetch-categories";
+import Slider from "../components/slider";
 
 export interface ContentData {
   id: number;
@@ -19,20 +20,29 @@ export interface ContentData {
 
 function HomePage() {
   const { content } = useMediaStore();
+  const [categories, setData] = useState<Array<any>>();
 
   const data = useLoaderData() as ContentData;
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate("/");
-  }, [content]);
+    const fetchAndSetData = async () => {
+      navigate("/");
+      try {
+        const categories = await fetchCategories();
+        setData(categories);
+      } catch (error) {
+        console.error("Failed to fetch categories:", error);
+      }
+    };
+
+    fetchAndSetData();
+  }, [content, navigate]);
 
   if (!data) {
     return null;
   }
-
-  fetchCategories();
-
+  // console.log(categories);
   return (
     <div className="relative h-full w-full">
       <Navbar />
@@ -46,6 +56,10 @@ function HomePage() {
       <div className="absolute left-0 top-0 -z-50 h-screen w-full bg-gradient-to-b from-black to-transparent" />
 
       <ContentDisplay data={data} content={content} />
+
+      <div className="flex flex-col gap-10 bg-black py-10">
+        {categories?.map((cat) => <Slider data={cat} />)}
+      </div>
     </div>
   );
 }
