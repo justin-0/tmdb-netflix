@@ -1,5 +1,5 @@
 import Navbar from "../components/navbars/auth-nav";
-
+import { MOVIE_CATEGORIES, TV_CATEGORIES } from "../lib/constants/const";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useMediaStore from "../store/media-store";
 import { useEffect, useState } from "react";
@@ -27,7 +27,6 @@ function HomePage() {
 
   useEffect(() => {
     const fetchAndSetData = async () => {
-      navigate("/");
       try {
         const categories = await fetchCategories();
         setData(categories);
@@ -37,12 +36,13 @@ function HomePage() {
     };
 
     fetchAndSetData();
-  }, [content, navigate]);
+    navigate("/");
+  }, [content]);
 
   if (!data) {
     return null;
   }
-  // console.log(categories);
+  console.log(categories);
   return (
     <>
       <div className="relative h-screen w-full">
@@ -59,7 +59,16 @@ function HomePage() {
         <ContentDisplay data={data} content={content} />
       </div>
       <div className="flex flex-col gap-10 bg-black py-10">
-        {categories?.map((cat) => <Slider data={cat} />)}
+        {categories?.map((cat, index) => (
+          <Slider
+            data={cat}
+            title={
+              content === "movie"
+                ? MOVIE_CATEGORIES[index]
+                : TV_CATEGORIES[index]
+            }
+          />
+        ))}
       </div>
     </>
   );

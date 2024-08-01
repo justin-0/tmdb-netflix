@@ -1,12 +1,12 @@
 export const MOVIE_CATEGORIES = [
-  "now_playing",
-  "top_rated",
-  "popular",
-  "upcoming",
+  "Now Playing",
+  "Popular",
+  "Top Rated",
+  "Upcoming",
 ];
 export const TV_CATEGORIES = [
-  "airing_today",
-  "on_the_air",
-  "popular",
-  "top_rated",
+  "Airing Today",
+  "On The Air",
+  "Popular",
+  "Top Rated",
 ];
