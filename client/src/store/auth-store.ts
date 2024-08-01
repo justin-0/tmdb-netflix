@@ -99,4 +99,6 @@ const useAuthStore = create<AuthState>()((set) => ({
   },
 }));
 
+useAuthStore.getState().isAuth();
+
 export default useAuthStore;
