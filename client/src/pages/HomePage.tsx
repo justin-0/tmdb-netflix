@@ -42,7 +42,7 @@ function HomePage() {
   if (!data) {
     return null;
   }
-  console.log(categories);
+
   return (
     <>
       <div className="relative h-screen w-full">

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { ContentData } from "../pages/HomePage";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Button } from "./ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type SliderProps = {
   data: ContentData[];
@@ -9,6 +11,7 @@ type SliderProps = {
 
 function Slider({ data, title }: SliderProps) {
   const sliderRef = useRef<HTMLDivElement | null>(null);
+  const [controls, setControls] = useState(false);
 
   const scrollLeft = () => {
     if (sliderRef.current) {
@@ -16,6 +19,7 @@ function Slider({ data, title }: SliderProps) {
         left: -sliderRef.current.offsetWidth,
         behavior: "smooth",
       });
+      console.log(-sliderRef.current.offsetWidth);
     }
   };
   const scrollRight = () => {
@@ -24,6 +28,7 @@ function Slider({ data, title }: SliderProps) {
         left: sliderRef.current.offsetWidth,
         behavior: "smooth",
       });
+      console.log(sliderRef.current.offsetWidth);
     }
   };
 
@@ -33,6 +38,8 @@ function Slider({ data, title }: SliderProps) {
       <div
         className="scrollbar-hide flex space-x-4 overflow-x-scroll"
         ref={sliderRef}
+        onMouseEnter={() => setControls(true)}
+        onMouseLeave={() => setControls(false)}
       >
         {data.map((d) => (
           <Link
@@ -50,6 +57,24 @@ function Slider({ data, title }: SliderProps) {
             <p className="mt-2 text-center">{d.title || d.name}</p>
           </Link>
         ))}
+        {controls && (
+          <>
+            <Button
+              size="icon"
+              onClick={scrollLeft}
+              className="absolute left-5 top-1/2 z-10 flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-black bg-opacity-50 text-white transition hover:bg-opacity-75 md:left-24"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+            <Button
+              size="icon"
+              onClick={scrollRight}
+              className="transiton absolute right-5 top-1/2 z-10 flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-black bg-opacity-50 text-white hover:bg-opacity-75 md:right-24"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </>
+        )}
       </div>
     </div>
   );
