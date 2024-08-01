@@ -72,7 +72,7 @@ export async function getShowsByCategory(req: Request, res: Response) {
   const { category } = req.params;
   try {
     const data = await consumeTMDB(
-      `https://api.themoviedb.org/3/movie/${category}`
+      `https://api.themoviedb.org/3/tv/${category}`
     );
     res.json({ success: true, content: data.results });
   } catch (err) {

@@ -4,6 +4,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import useMediaStore from "../store/media-store";
 import { useEffect } from "react";
 import ContentDisplay from "../components/content";
+import { fetchCategories } from "../lib/fetch-categories";
 
 export interface ContentData {
   id: number;
@@ -29,6 +30,8 @@ function HomePage() {
   if (!data) {
     return null;
   }
+
+  fetchCategories();
 
   return (
     <div className="relative h-full w-full">
