@@ -8,6 +8,7 @@ import Register from "./routes/Register.tsx";
 import Login from "./routes/Login.tsx";
 import contentLoader from "./lib/loaders/content-loader.ts";
 import WatchRoute from "./routes/Watch.tsx";
+import DetailsRoute from "./routes/Details.tsx";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <h1>Details</h1>,
+        element: <DetailsRoute />,
       },
       {
         path: "/search",

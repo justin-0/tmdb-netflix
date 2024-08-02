@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import useMediaStore from "../../store/media-store";
 
@@ -8,10 +8,17 @@ interface NavButtonsProps {
 
 function NavButtons({ role }: NavButtonsProps) {
   const { setContent } = useMediaStore();
+  const navigate = useNavigate();
 
   if (role === "movies") {
     return (
-      <Button variant="ghost" onClick={() => setContent("movie")}>
+      <Button
+        variant="ghost"
+        onClick={() => {
+          setContent("movie");
+          navigate("/");
+        }}
+      >
         <span>Movies</span>
       </Button>
     );

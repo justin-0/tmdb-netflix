@@ -98,7 +98,7 @@ function WatchRoute() {
   return (
     <div className="h-screen w-full bg-black text-white">
       <Navbar />
-      <div className="mx-auto flex w-10/12 flex-col items-center justify-center outline outline-red-500 md:max-w-4xl">
+      <div className="mx-auto mt-8 flex w-10/12 flex-col items-center justify-center md:max-w-4xl">
         {/* SHOW CURRENT TRAILER */}
         {trailers[currentIndex] ? (
           <>
@@ -107,7 +107,6 @@ function WatchRoute() {
               controls={true}
               width={"100%"}
               height={"70vh"}
-              // className="h-full w-full"
             />
           </>
         ) : null}
