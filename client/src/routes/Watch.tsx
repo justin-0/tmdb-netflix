@@ -54,6 +54,25 @@ function WatchRoute() {
     getTrailers();
   }, [content, params.id]);
 
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+    const getMediaContent = async () => {
+      try {
+        const response = await axios.get(
+          `/api/v1/${content}/${params.id}/details`,
+        );
+        setMedia(response.data.content);
+      } catch (err) {
+        if (axios.isAxiosError(err)) {
+          console.log(err.message);
+        }
+      }
+    };
+    getMediaContent();
+  }, [content, params.id]);
+
   return (
     <div className="h-screen w-full bg-black text-white">
       <Navbar />
