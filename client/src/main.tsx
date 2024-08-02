@@ -7,6 +7,7 @@ import MainLayout from "./layout/MainLayout.tsx";
 import Register from "./routes/Register.tsx";
 import Login from "./routes/Login.tsx";
 import contentLoader from "./lib/loaders/content-loader.ts";
+import WatchRoute from "./routes/Watch.tsx";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/watch/:id",
-        element: <h1>Watch page</h1>,
+        element: <WatchRoute />,
       },
       {
         path: "/details/:id",

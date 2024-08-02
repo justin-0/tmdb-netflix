@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ContentData } from "../pages/HomePage";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "./ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -36,7 +36,7 @@ function Slider({ data, title }: SliderProps) {
     <div className="relative bg-black px-5 text-white md:px-20">
       <h2 className="mb-4 text-xl font-bold md:text-2xl">{title}</h2>
       <div
-        className="scrollbar-hide flex space-x-4 overflow-x-scroll"
+        className="flex space-x-4 overflow-x-scroll scrollbar-hide"
         ref={sliderRef}
         onMouseEnter={() => setControls(true)}
         onMouseLeave={() => setControls(false)}
@@ -62,14 +62,14 @@ function Slider({ data, title }: SliderProps) {
             <Button
               size="icon"
               onClick={scrollLeft}
-              className="absolute left-5 top-1/2 z-10 flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-black bg-opacity-50 text-white transition hover:bg-opacity-75 md:left-24"
+              className="absolute left-5 top-1/2 z-10 flex -translate-y-1/2 items-center justify-center rounded-full bg-black bg-opacity-50 text-white transition hover:bg-opacity-75 md:left-24"
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
             <Button
               size="icon"
               onClick={scrollRight}
-              className="transiton absolute right-5 top-1/2 z-10 flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-black bg-opacity-50 text-white hover:bg-opacity-75 md:right-24"
+              className="transiton absolute right-5 top-1/2 z-10 flex -translate-y-1/2 items-center justify-center rounded-full bg-black bg-opacity-50 text-white hover:bg-opacity-75 md:right-24"
             >
               <ChevronRight className="h-4 w-4" />
             </Button>
