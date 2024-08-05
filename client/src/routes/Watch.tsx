@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/navbars/auth-nav";
 import useAuthStore from "../store/auth-store";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useMediaStore from "../store/media-store";
 import axios from "axios";
 import ReactPlayer from "react-player";
 import { Button } from "../components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Info } from "lucide-react";
 import Slider from "../components/slider";
 import { ContentData } from "../pages/HomePage";
 
@@ -26,7 +26,6 @@ function WatchRoute() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const startOfTrailers = currentIndex === 0 ? true : false;
   const endOfTrailers = currentIndex === trailers.length - 1;
-  console.log(currentIndex === 0);
 
   useEffect(() => {
     if (!user) {
@@ -76,7 +75,7 @@ function WatchRoute() {
       </div>
     );
   }
-  console.log(similarMedia?.map((i) => console.log("MEDIA_ITEM ", i)));
+
   return (
     <div className="h-screen w-full bg-black text-white">
       <Navbar />
@@ -108,9 +107,17 @@ function WatchRoute() {
             <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
+        <div className="my-10 bg-black md:mb-0">
+          <Link to={`/details/${params.id}`}>
+            <Button variant="secondary">
+              <Info className="mr-2 h-4 w-4" />
+              More Info
+            </Button>
+          </Link>
+        </div>
+        {/* SIMILAR MEDIA */}
       </div>
-      {/* SIMILAR MEDIA */}
-      <div className="bg-black py-32">
+      <div className="bg-black">
         <Slider data={similarMedia} title="Similar Movies and Shows" />
       </div>
     </div>
