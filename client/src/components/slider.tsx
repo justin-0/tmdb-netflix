@@ -5,8 +5,8 @@ import { Button } from "./ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type SliderProps = {
-  data: ContentData[];
-  title: string;
+  data: ContentData[] | undefined;
+  title?: string;
 };
 
 function Slider({ data, title }: SliderProps) {
@@ -32,6 +32,10 @@ function Slider({ data, title }: SliderProps) {
     }
   };
 
+  if (!data) {
+    return null;
+  }
+
   return (
     <div className="relative bg-black px-5 text-white md:px-20">
       <h2 className="mb-4 text-xl font-bold md:text-2xl">{title}</h2>
@@ -49,7 +53,11 @@ function Slider({ data, title }: SliderProps) {
           >
             <div className="overflow-hidden rounded-lg">
               <img
-                src={`https://image.tmdb.org/t/p/w500/${d.backdrop_path}`}
+                src={
+                  d.backdrop_path
+                    ? `https://image.tmdb.org/t/p/w500/${d.backdrop_path}`
+                    : `https://placehold.jp/310x174.png`
+                }
                 alt="Movie image"
                 className="transition-transform duration-300 ease-in-out group-hover:scale-125"
               />
